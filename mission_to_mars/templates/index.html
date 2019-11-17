@@ -12,50 +12,55 @@
             <h1 align="center">Mission to Mars</h1>
             <p align="center"><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars</a></p>
         </div> 
-        <div class="row" id="mars-news">
-            <div class="col-md-12">
-                <h2>Latest Mars News</h2>
-                    <h5>{{ mars["mars_news"] }}</h6>
-                    <p>{{ mars["mars_paragraph"] }}</p>
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-md-9">
-                    <h2><b>Featured Mars Image</b></h2>
-                    <img src= {{ mars["mars_image"] }} class="img-responsive w3-round">
+        {% if empty == 0: %}
+            <p>Run scrape to load data</p>
+        {% else: %}
+            <div class="row" id="mars-news">
+                <div class="col-md-12">
+                    <h2>Latest Mars News</h2>
+                        <h5>{{ mars["mars_news"] }}</h6>
+                        <p>{{ mars["mars_paragraph"] }}</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <h4><b>Latest Weather on Mars</b></h4>
-                                    <p>{{ mars["mars_weather"] }}</p>
+            </div>
+            <div class="row">
+                    <div class="col-md-9">
+                        <h2><b>Featured Mars Image</b></h2>
+                        <img src= {{ mars["mars_image"] }} class="img-responsive w3-round">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h4><b>Latest Weather on Mars</b></h4>
+                                        <p>{{ mars["mars_weather"] }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">                        
-                            <h4><b>Mars Facts</b></h4>
-                            {{mars.mars_facts | safe }}
+                        <div class="row">
+                            <div class="col-md-12">                        
+                                <h4><b>Mars Facts</b></h4>
+                                {{mars.mars_facts | safe }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="row" style="margin-top:80px;">
-                    <!-- <div class="page-header"> -->
-                        <!-- <div class="col-md-6"> -->
-                        <h2 class="text-center"><b>Mars' Hemispheres</b></h2>
-                            {% for hemisphere in mars["mars_hemisphere"] %}
-                                <p align="center"><b>{{ hemisphere["title"] }}</b></p>
-                                <img src= {{ hemisphere["img_url"] }} class="img-responsive"/>
-                            {% endfor %}
+                <div>
+                    <div class="row" style="margin-top:80px;">
+                        <!-- <div class="page-header"> -->
+                            <!-- <div class="col-md-6"> -->
+                            <h2 class="text-center"><b>Mars' Hemispheres</b></h2>
+                                {% for hemisphere in mars["mars_hemisphere"] %}
+                                    <p align="center"><b>{{ hemisphere["title"] }}</b></p>
+                                    <img src= {{ hemisphere["img_url"] }} class="img-responsive"/>
+                                {% endfor %}
+                            <!-- </div> -->
                         <!-- </div> -->
-                    <!-- </div> -->
+                    </div>
                 </div>
             </div>
+        {% endif %}
     </div>
 </body>
 </html>

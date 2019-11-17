@@ -7,8 +7,7 @@ from selenium import webdriver
 import lxml
 import requests
 
-
-
+browser = {}
 
 def init_browser():
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
@@ -16,7 +15,7 @@ def init_browser():
 
 def news():
     url     = "https://mars.nasa.gov/news/"
-    browser = init_browser()
+    # browser = init_browser()
 
     browser.visit(url)
 
@@ -32,7 +31,7 @@ def news():
 def image(): 
     images_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     image_url  = "https://www.jpl.nasa.gov"
-    browser    = init_browser()
+    # browser    = init_browser()
 
     browser.visit(images_url)
 
@@ -47,7 +46,7 @@ def image():
 
 def weather():  
     tweet_url = 'https://twitter.com/marswxreport?lang=en'
-    browser   = init_browser()
+    # browser   = init_browser()
 
     browser.visit(tweet_url)
 
@@ -60,7 +59,7 @@ def weather():
 
 def facts():  
     facts_url = "https://space-facts.com/mars/"
-    browser   = init_browser()
+    # browser   = init_browser()
     
     mars_df         = pd.read_html(facts_url)
     mars_df         = pd.DataFrame(mars_df[0])
@@ -74,7 +73,7 @@ def facts():
 
 def hem(): 
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    browser         = init_browser()
+    # browser         = init_browser()
 
     browser.visit(hemispheres_url)
     
@@ -101,6 +100,9 @@ def hem():
     return mars_hemisphere
 
 def scrape():
+
+    global browser
+    browser = init_browser()
 
     final_data = { 
         "mars_news" : news()[0], 
