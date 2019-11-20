@@ -17,9 +17,13 @@
         {% else: %}
             <div class="row" id="mars-news">
                 <div class="col-md-12">
-                    <h2>Latest Mars News</h2>
-                        <h5>{{ mars["mars_news"] }}</h6>
-                        <p>{{ mars["mars_paragraph"] }}</p>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2>Latest Mars News</h2>
+                            <h4>{{ mars["mars_news"] }}</h4>
+                            <p>{{ mars["mars_paragraph"] }}</p>
+                        </div>   
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -47,20 +51,15 @@
                     </div>
                 </div>
                 <div>
-                    <div class="row" style="margin-top:80px;">
-                        <!-- <div class="page-header"> -->
-                            <!-- <div class="col-md-6"> -->
+                    <div class="row" style="margin-top:100px;">
                             <h2 class="text-center"><b>Mars' Hemispheres</b></h2>
                                 {% for hemisphere in mars["mars_hemisphere"] %}
-                                    <p align="center"><b>{{ hemisphere["title"] }}</b></p>
-                                    <img src= {{ hemisphere["img_url"] }} class="img-responsive"/>
+                                    <p align="left"><b>{{ hemisphere["title"] }}</b></p>
+                                    <img src= {{ hemisphere["img_url"] }} class="img-responsive" height="250" width="250"/>
                                 {% endfor %}
-                            <!-- </div> -->
-                        <!-- </div> -->
                     </div>
                 </div>
-            </div>
+        </div>
         {% endif %}
-    </div>
 </body>
 </html>
